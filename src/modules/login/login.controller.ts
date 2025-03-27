@@ -12,7 +12,7 @@ import { LoginService } from './login.service';
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
-  @Post('login')
+  @Post()
   @UsePipes(new ValidationPipe())
   loginUser(@Body() user: LoginDto) {
     return this.loginService.loginUser(user);

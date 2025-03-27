@@ -6,6 +6,8 @@ import {
   Param,
   Delete,
   Put,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { WalletsService } from './wallet.service';
 import { CreateWalletDto } from './dto/create-wallet.dto';
@@ -16,6 +18,7 @@ export class WalletsController {
   constructor(private readonly walletsService: WalletsService) {}
 
   @Post()
+  @UsePipes(new ValidationPipe())
   create(@Body() createWalletDto: CreateWalletDto) {
     return this.walletsService.create(createWalletDto);
   }
