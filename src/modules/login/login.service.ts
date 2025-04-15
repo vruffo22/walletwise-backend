@@ -29,7 +29,10 @@ export class LoginService {
           expiresIn: this.configService.get('timeOutToken'),
           secret: this.configService.get('keyToken'),
         });
-        return { accessToken, id };
+        return {
+          token: accessToken,
+          user: { name: user.name, email: user.email },
+        };
       }
       throw new HttpException('Password is incorrect', 401);
     }
