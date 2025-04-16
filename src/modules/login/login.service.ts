@@ -31,7 +31,7 @@ export class LoginService {
         });
         return {
           token: accessToken,
-          user: { name: user.name, email: user.email },
+          user: { name: user.name, email: user.email, id: user._id },
         };
       }
       throw new HttpException('Password is incorrect', 401);
